@@ -1,6 +1,6 @@
 # Rick and Morty Explorer 🧪
 
-Una aplicación web moderna para explorar el universo de Rick and Morty, construida con Next.js 15, React 19 y Tailwind CSS v4.
+Una aplicación web moderna para explorar el universo de Rick and Morty, construida con Next.js 16.1.6, React 19 y Tailwind CSS v4.
 
 ## 🚀 Características
 
@@ -13,7 +13,7 @@ Una aplicación web moderna para explorar el universo de Rick and Morty, constru
 
 ## 🛠️ Tecnologías
 
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Framework**: [Next.js 16.1.6](https://nextjs.org/) (App Router)
 - **Biblioteca UI**: [React 19](https://react.dev/)
 - **Estilos**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **API**: [The Rick and Morty API](https://rickandmortyapi.com/)
@@ -24,7 +24,7 @@ Una aplicación web moderna para explorar el universo de Rick and Morty, constru
 1.  **Clonar el repositorio** (o descargar el código):
     ```bash
     git clone <tu-repositorio>
-    cd my-app
+    cd rick-and-morty-testing-activity
     ```
 
 2.  **Instalar dependencias**:
@@ -46,6 +46,28 @@ Una aplicación web moderna para explorar el universo de Rick and Morty, constru
     ```
 
 4.  Abrir [http://localhost:3000](http://localhost:3000) en tu navegador.
+
+## Pruebas automatizadas
+
+La suite de Vitest verifica las tarjetas de personajes, los límites de paginación, las páginas de listado y detalle, la estructura de la aplicación y los estados de carga y error. Las pruebas del cliente HTTP simulan `fetch` para comprobar las URL solicitadas, los errores HTTP y de conexión, y la normalización de cero, uno o varios episodios. Las pruebas de páginas invocan los componentes de servidor con parámetros controlados y comprueban el HTML resultante.
+
+Para reproducir el reporte con el archivo de bloqueo del proyecto, usá Node.js 24 y ejecutá estos comandos desde la carpeta que contiene `package.json`.
+
+```bash
+npx pnpm@10.30.0 install --frozen-lockfile
+npm run test:coverage
+```
+
+El script ejecuta `vitest run --coverage`. La configuración en `vitest.config.ts` mide todos los archivos TypeScript y TSX de `src/` con código ejecutable. Las interfaces de `src/types/` solo existen durante la compilación. Si alguna de las cuatro métricas globales baja del 80 %, el comando termina con error.
+
+| Métrica | Cobertura obtenida | Mínimo exigido |
+| --- | ---: | ---: |
+| Sentencias (Statements) | 100 % (46/46) | 80 % |
+| Ramas (Branches) | 100 % (29/29) | 80 % |
+| Funciones (Functions) | 100 % (16/16) | 80 % |
+| Líneas (Lines) | 100 % (45/45) | 80 % |
+
+**Resultado de la ejecución:** 30 pruebas aprobadas en 6 archivos. Para explorar la cobertura línea por línea, abrí [el reporte HTML](coverage/index.html) en tu navegador después de descargar el proyecto. [Ver captura de la consola](evidencias/cobertura-consola.png).
 
 ## 🚀 Despliegue
 
